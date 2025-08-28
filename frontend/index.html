@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Overlay Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header>
+    <h1>Player Overlay Dashboard</h1>
+    <div id="auth-container"></div>
+  </header>
+  
+  <main id="app" role="main">
+    <p>Please sign in to manage players and overlays.</p>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+  <div id="g_id_onload"
+       data-client_id="YOUR_GOOGLE_CLIENT_ID"
+       data-callback="handleGoogleSignIn"
+       data-auto_prompt="false">
+  </div>
+</body>
+</html>
