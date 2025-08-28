@@ -1,0 +1,22 @@
+name = "player-overlay-backend"
+main = "worker/src/index.js"
+compatibility_date = "2023-10-30"
+
+# Bind a KV Namespace to store player and overlay metadata.
+# Create with: wrangler kv:namespace create PLAYERS_KV
+# Create with: wrangler kv:namespace create OVERLAYS_KV
+kv_namespaces = [
+  { binding = "PLAYERS_KV", id = "", preview_id = "" },
+  { binding = "OVERLAYS_KV", id = "", preview_id = "" }
+]
+
+# Bind an R2 Bucket to store the overlay PNG assets.
+# Create with: wrangler r2 bucket create overlay-assets
+r2_buckets = [
+  { binding = "OVERLAY_ASSETS", bucket_name = "overlay-assets", preview_bucket_name = "overlay-assets" }
+]
+
+# Secret variables for JWT validation (replace with actual secrets)
+# wrangler secret put GOOGLE_CLIENT_ID
+[vars]
+GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID"
