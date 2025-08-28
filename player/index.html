@@ -2,4 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
+    <title>Player App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <section id="pairing-screen" style="display: none;">
+            <h1>Pairing Mode</h1>
+            <p>Please enter this code on the web admin dashboard:</p>
+            <h2 id="pairing-code"></h2>
+        </section>
+        <section id="status-screen" style="display: none;">
+            <h1>Player App</h1>
+            <p>Player is online and ready for hotkeys.</p>
+        </section>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
