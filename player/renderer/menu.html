@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+    <script>
+        const { ipcRenderer } = require('electron');
+        window.addEventListener('load', () => {
+            const overlayList = document.getElementById('overlay-list');
+
+            const renderMenu = (data) => {
+                overlayList.innerHTML = '';
+                data.overlays.forEach(overlay => {
+                    const li = document.createElement('li');
+                    li.innerText = overlay.name;
+                    if (overlay.filePath === data.active) {
+                        li.classList.add('active');
+                    }
+                    overlayList.appendChild(li);
+                });
+            };
+            
+            window.api.onUpdateOverlayList(renderMenu);
+            window.api.onUpdateActiveOverlay(renderMenu);
+        });
+    </script>
+</head>
+<body>
+    <h1>Available Overlays</h1>
+    <ul id="overlay-list"></ul>
+</body>
+</html>
