@@ -1,0 +1,12 @@
+{
+  "name": "player-overlay-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev worker/src/index.js --local",
+    "deploy": "wrangler deploy worker/src/index.js"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
